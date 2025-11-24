@@ -2,8 +2,6 @@ import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
 
-st.set_option('deprecation.showPyplotGlobalUse', False)
-
 # ------------------------------------------------------
 # YIELD + BIOMASS MODELS
 # ------------------------------------------------------
@@ -66,7 +64,7 @@ def soil_N_adjustment(no3, nh4):
 # STREAMLIT LAYOUT
 # ------------------------------------------------------
 
-st.title(" Cotton Nitrogen DSS (NFREC Quincy)")
+st.title("Cotton Nitrogen DSS (NFREC Quincy)")
 st.write("""
 This decision support tool helps determine the **optimal nitrogen rate**
 for cotton based on yield curves, SPAD readings, soil nitrogen, and economics.
@@ -113,11 +111,11 @@ nfue_recommend = nfue(final_N, year)
 # OUTPUT DISPLAY
 # ------------------------------------------------------
 
-st.subheader(" Nitrogen Recommendation")
+st.subheader("Nitrogen Recommendation")
 
 st.write(f"###  Final Recommended Nitrogen: **{final_N:.1f} kg/ha**")
 
-st.write("####  Sensor Adjustments")
+st.write("#### Sensor Adjustments")
 st.write(f"- SPAD adjustment: **{adj_spad:+.0f} kg/ha**")
 st.write(f"- Soil N adjustment: **{adj_soil:+.0f} kg/ha**")
 
@@ -127,7 +125,7 @@ st.write(f"- Yield at recommended N: **{y_recommend:.0f} kg/ha**")
 st.write(f"- Profit at current N: **${profit_current:.0f}/ha**")
 st.write(f"- Profit at recommended N: **${profit_recommend:.0f}/ha**")
 
-st.write("#### 📉 NFUE (Nitrogen Fertilizer Use Efficiency)")
+st.write("#### NFUE (Nitrogen Fertilizer Use Efficiency)")
 st.write(f"- At current N: **{nfue_current:.2f} kg lint/kg N**")
 st.write(f"- At recommended N: **{nfue_recommend:.2f} kg lint/kg N**")
 
@@ -135,7 +133,7 @@ st.write(f"- At recommended N: **{nfue_recommend:.2f} kg lint/kg N**")
 # YIELD CURVE PLOT
 # ------------------------------------------------------
 
-st.subheader(" Yield Response Curve")
+st.subheader("Yield Response Curve")
 
 N_vals = np.linspace(0, 220, 200)
 y_vals = lint_yield(N_vals, year)
